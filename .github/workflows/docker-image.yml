@@ -1,0 +1,19 @@
+name: Kubernetes CI
+on: 
+  push:
+    branches:
+    - master
+jobs:
+  pyapp-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the Code
+        uses: actions/checkout@v4
+      - name: Build Docker Image
+        run: "docker build -t lehardocker/pyapp:${GITHUB_SHA::7} ."
+        
+
+
+
+
+      
