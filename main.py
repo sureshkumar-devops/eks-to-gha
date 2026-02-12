@@ -8,12 +8,12 @@ def create_app():
     @app.get("/")
     def index():
         message = os.getenv("MESSAGE", "Hello from Flask on Kubernetes!..")
-        # Return HTML with green message
+        # Return HTML with red message
         return f"""
          <html>
             <head><title>Python Docker App</title></head>
             <body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
-             <h1 style="color: black;">{message}</h1>
+             <h1 style="color: red;">{message}</h1>
             </body>
          </html>   
          """
