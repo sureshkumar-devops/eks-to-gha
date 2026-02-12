@@ -25,7 +25,7 @@ jobs:
       - name: Update deployment.yml file with latest docker tag
         run: |
           # Short commit hash
-          SHORT_SHA =${GITHUB_SHA::7}
+          SHORT_SHA=${GITHUB_SHA::7}
           # Update image tag in deployment.yml file          
           yq -i '.spec.template.spec.containers[0].image = "lehardocker/pyapp:'"$SHORT_SHA"'"' ./k8s/pyapp-deployment.yml
       
