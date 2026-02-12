@@ -7,18 +7,20 @@ metadata:
 spec:
   replicas: 4
   selector:
-     matchLabels: 
-       app: pyapp
+    matchLabels:
+      app: pyapp
   template:
     metadata:
       labels:
-         app: pyapp
+        app: pyapp
     spec:
       containers:
+<<<<<<< HEAD
         - name: pyapp-c1          
           image: "lehardocker/pyapp:$SHORT_SHA
+=======
+        - name: pyapp-c1
+          image: lehardocker/pyapp:e5c27db
+>>>>>>> refs/remotes/origin/master
           ports:
-          - containerPort: 8000
-
-
-    
+            - containerPort: 8000

@@ -1,0 +1,29 @@
+eksctl create cluster \
+--name ghs-cluster \
+--version 1.30 \
+--region ap-south-1 \
+--nodegroup-name ghs-ng \
+--spot \
+--node-type t3.medium \
+--nodes 2 \
+--nodes-min 1 \
+--nodes-max 3
+
+
+kubectl get nodes
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+kubectl get pods -n argocd
+kubectl get svc -n argocd
+kubectl edit svc argocd-server -n argocd  
+change type: clusterIP to LoadBalancer
+save and exit
+
+kubectl get svc -n argocd
+you will see loadbalance endpoint
+
+kubectl get secrets -n argocd
+kubectl -n argocd get secrets argocd-initial-admin-secret -o jsonpath="{ .data.password }" | base64 -d; echo 
+
+successfull login to argocd webui
