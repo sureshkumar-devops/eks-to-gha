@@ -28,6 +28,13 @@ jobs:
           SHORT_SHA=${GITHUB_SHA::7}
           # Update image tag in deployment.yml file          
           yq -i '.spec.template.spec.containers[0].image = "lehardocker/pyapp:'"$SHORT_SHA"'"' ./k8s/pyapp-deployment.yml
+      - name: Commit deployment file changes
+        run: |
+          git config user.name "github-actions[bot]"    
+          git config user.email "github-actions@noreply"
+          git add ./k8s/pyapp-deployment.yml
+          git commit -m "docker Tag Updated by GHA"
+          git push origin master    
       
 
   
