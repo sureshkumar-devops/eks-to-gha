@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: pyapp-c1
-          image: lehardocker/pyapp:dc6a657
+          image: lehardocker/pyapp:42f07ec
           ports:
             - containerPort: 8000
